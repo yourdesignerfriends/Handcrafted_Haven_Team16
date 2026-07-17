@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Handcrafted Haven — global theme
+   Design direction: botanical-catalog / letterpress. Deep pine green brand,
+   warm ivory paper, ochre accent. Fraunces (display) + Karla (body).
+   ========================================================================== */
+
+:root {
+  /* Color palette */
+  --paper: #f6f2e9;        /* main background (warm ivory) */
+  --paper-2: #efe8d9;      /* alternating section background */
+  --ink: #23271f;          /* primary text (warm near-black) */
+  --ink-soft: #55594d;     /* secondary text */
+  --pine: #33503f;         /* brand green (primary) */
+  --pine-deep: #263e30;    /* hover / pressed */
+  --ochre: #b57518;        /* accent (used with restraint) */
+  --sage: #7c8a6e;         /* muted decorative green */
+  --line: rgba(35, 39, 31, 0.14);   /* hairline dividers */
+  --card: #fffdf7;         /* raised surfaces */
+
+  /* Typography (font families injected by next/font in layout.tsx) */
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+
+  /* Spacing / layout */
+  --max-width: 1120px;
+  --radius: 14px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Shared layout container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Accessibility: visible keyboard focus for every interactive element */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--ochre);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link — jumps keyboard users straight to main content */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--pine);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+  z-index: 1000;
+  border-radius: 0 0 var(--radius) 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
