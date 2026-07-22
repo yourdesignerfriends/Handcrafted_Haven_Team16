@@ -3,11 +3,11 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .title {
-  color: var(--pine);
+  color: var(--ink);
   margin-bottom: 0.5rem;
 }
 
@@ -54,7 +54,7 @@
 .textarea:focus {
   outline: none;
   border-color: var(--pine);
-  box-shadow: 0 0 0 3px rgba(51, 80, 63, 0.15);
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
 }
 
 .submitBtn {

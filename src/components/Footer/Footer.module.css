@@ -24,7 +24,7 @@
 }
 
 .tagline {
-  color: rgba(246, 242, 233, 0.6);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.95rem;
   max-width: 22rem;
 }
@@ -52,7 +52,7 @@
 }
 
 .col a {
-  color: rgba(246, 242, 233, 0.78);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 0.95rem;
   transition: color 0.16s ease;
 }
@@ -67,23 +67,36 @@
   gap: 1rem;
   flex-wrap: wrap;
   padding-block: 1.5rem;
-  border-top: 1px solid rgba(246, 242, 233, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
   font-size: 0.88rem;
-  color: rgba(246, 242, 233, 0.6);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .small {
-  color: rgba(246, 242, 233, 0.45);
+  color: rgba(255, 255, 255, 0.48);
 }
 
 @media (max-width: 720px) {
   .grid {
     grid-template-columns: 1fr;
   }
+
+  .cols {
+    gap: 1rem;
+  }
+
+  .bottom {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
   .cols {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    padding-top: 2.25rem;
   }
 }

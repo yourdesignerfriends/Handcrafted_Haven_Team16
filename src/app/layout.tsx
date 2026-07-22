@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { Fraunces, Karla } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
-// Display face — soft, characterful serif for headings and the logo.
-const fraunces = Fraunces({
+// Display face — elegant serif for headlines and brand moments.
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-// Body face — a warm grotesque for readable copy and UI.
-const karla = Karla({
+// Body face — modern, clean sans serif for UI and long reading.
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -45,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${karla.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body>{children}</body>
     </html>
   );

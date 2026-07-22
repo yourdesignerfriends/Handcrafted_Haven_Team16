@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import Link from "next/link";
 import { logoutAction } from "@/app/login/actions";
 import { prisma } from "@/lib/prisma";
 import styles from "./Navbar.module.css";
@@ -14,33 +15,30 @@ export default async function Navbar() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <a href="/" className={styles.logo} aria-label="Handcrafted Haven, home">
-          <span className={styles.mark} aria-hidden="true">
-            ✿
-          </span>
-          Handcrafted&nbsp;Haven
-        </a>
+        <Link href="/" className={styles.logo} aria-label="Handcrafted Haven, home">
+          Handcrafted Haven
+        </Link>
 
         <nav className={styles.nav} aria-label="Primary">
-          <a href="/products">Products</a>
-          <a href="/artisans">Artisans</a>
-          <a href="/about">About</a>
+          <Link href="/products">Products</Link>
+          <Link href="/artisans">Artisans</Link>
+          <Link href="/register/artisan">Become a seller</Link>
 
           {isArtisan && (
             <>
-              <a href="/artisan/products">My Products</a>
-              <a href="/artisan/products/profile">Profile</a>
+              <Link href="/artisan/products">My Products</Link>
+              <Link href="/artisan/products/profile">Profile</Link>
             </>
           )}
 
-          {isAdmin && <a href="/admin/products">Admin Panel</a>}
+          {isAdmin && <Link href="/admin/products">Admin Panel</Link>}
 
           {!isArtisan && !isAdmin && isAuthenticated && (
             <>
-              <a href="/customer">Dashboard</a>
-              <a href="/customer/orders">Orders</a>
-              <a href="/customer/cart">Cart</a>
-              <a href="/customer/profile">Profile</a>
+              <Link href="/customer">Dashboard</Link>
+              <Link href="/customer/orders">Orders</Link>
+              <Link href="/customer/cart">Cart</Link>
+              <Link href="/customer/profile">Profile</Link>
             </>
           )}
         </nav>
@@ -48,14 +46,14 @@ export default async function Navbar() {
         <div className={styles.actions}>
           {isAuthenticated ? (
             <form action={logoutAction}>
-              <button type="submit" className={styles.logoutButton}>
+              <button type="submit" className="button button--primary">
                 Logout
               </button>
             </form>
           ) : (
-            <a href="/login" className={styles.signIn}>
+            <Link href="/login" className="button button--secondary">
               Login
-            </a>
+            </Link>
           )}
         </div>
       </div>

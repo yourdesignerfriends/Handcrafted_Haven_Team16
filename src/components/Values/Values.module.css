@@ -23,7 +23,7 @@
 }
 
 .item {
-  padding-top: 1.25rem;
+  padding: 1.25rem;
 }
 
 .rule {
@@ -47,5 +47,20 @@
 @media (max-width: 720px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding-block: 2.5rem 3rem;
+  }
+
+  .itemTitle {
+    font-size: 1.16rem;
+  }
+
+  .itemText {
+    font-size: 0.95rem;
   }
 }

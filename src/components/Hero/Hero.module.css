@@ -1,111 +1,111 @@
 .hero {
-  padding-block: clamp(3rem, 8vw, 6rem);
+  position: relative;
+  width: 100%;
+  min-height: clamp(70vh, 78vh, 88vh);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(2rem, 6vw, 4.5rem);
-  align-items: center;
+.heroImage {
+  object-fit: cover;
+  object-position: center 42%;
+  filter: saturate(0.45) contrast(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(12, 12, 12, 0.64) 0%,
+    rgba(12, 12, 12, 0.45) 42%,
+    rgba(12, 12, 12, 0.3) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  max-width: 46rem;
+  padding-block: clamp(3rem, 8vw, 5.5rem);
 }
 
 .eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--sage);
-  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 1rem;
 }
 
 .title {
-  font-size: clamp(2.4rem, 5.5vw, 3.75rem);
-  letter-spacing: -0.01em;
-  margin-bottom: 1.4rem;
-}
-
-.accent {
-  color: var(--ochre);
-  font-style: italic;
+  font-size: clamp(2.2rem, 5.4vw, 4.4rem);
+  line-height: 0.98;
+  margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 .sub {
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-  color: var(--ink-soft);
-  max-width: 30rem;
-  margin-bottom: 2.25rem;
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 34rem;
+  margin-bottom: 1.8rem;
 }
 
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
-.primary,
-.secondary {
-  padding: 0.85rem 1.6rem;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.18s ease;
+.buttons :global(.button--secondary) {
+  border-color: rgba(255, 255, 255, 0.75);
+  color: #ffffff;
+  background: transparent;
 }
 
-.primary {
-  background: var(--pine);
-  color: var(--paper);
-}
-.primary:hover {
-  background: var(--pine-deep);
-}
-
-.secondary {
-  border: 1.5px solid var(--pine);
-  color: var(--pine);
-}
-.secondary:hover {
-  background: var(--pine);
-  color: var(--paper);
-}
-
-/* --- Visual side --- */
-.visual {
-  position: relative;
-}
-
-.imageCard {
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius);
-  background:
-    radial-gradient(120% 120% at 30% 20%, #46654f 0%, #2f4a3a 55%, #24382c 100%);
-  border: 1px solid var(--line);
-  box-shadow: 0 24px 48px -24px rgba(35, 39, 31, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.imageHint {
-  color: rgba(246, 242, 233, 0.55);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.seal {
-  position: absolute;
-  bottom: -22px;
-  left: -22px;
-  transform: rotate(-12deg);
-  filter: drop-shadow(0 8px 16px rgba(35, 39, 31, 0.25));
+.buttons :global(.button--secondary:hover) {
+  background: #ffffff;
+  color: #111111;
 }
 
 @media (max-width: 860px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .hero {
+    min-height: 74vh;
   }
-  .visual {
-    order: -1;
-    max-width: 380px;
+
+  .content {
+    text-align: center;
+  }
+
+  .sub {
+    margin-inline: auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .eyebrow {
+    font-size: 0.68rem;
+  }
+
+  .title {
+    font-size: clamp(1.85rem, 10vw, 2.35rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .sub {
+    font-size: 0.95rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .buttons {
+    gap: 0.7rem;
   }
 }

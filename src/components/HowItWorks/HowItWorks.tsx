@@ -20,7 +20,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className={styles.section} aria-labelledby="how-title">
+    <section id="how-it-works" className={styles.section} aria-labelledby="how-title">
       <div className="container">
         <h2 id="how-title" className={styles.title}>
           From &ldquo;oh, nice&rdquo; to owning it
@@ -28,7 +28,7 @@ export default function HowItWorks() {
 
         <ol className={styles.steps}>
           {steps.map((s) => (
-            <li key={s.n} className={styles.step}>
+            <li key={s.n} className={`${styles.step} surface-card`}>
               <span className={styles.num} aria-hidden="true">
                 {s.n}
               </span>

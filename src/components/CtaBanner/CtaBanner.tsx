@@ -1,8 +1,9 @@
+import Link from "next/link";
 import styles from "./CtaBanner.module.css";
 
 export default function CtaBanner() {
   return (
-    <section className={styles.section} aria-labelledby="cta-title">
+    <section id="become-seller" className={styles.section} aria-labelledby="cta-title">
       <div className={`container ${styles.inner}`}>
         <div>
           <h2 id="cta-title" className={styles.title}>
@@ -13,9 +14,9 @@ export default function CtaBanner() {
             more of every sale.
           </p>
         </div>
-        <a href="/register" className={styles.button}>
+        <Link href="/register/artisan" className={`${styles.button} button button--secondary`}>
           Become a seller
-        </a>
+        </Link>
       </div>
     </section>
   );

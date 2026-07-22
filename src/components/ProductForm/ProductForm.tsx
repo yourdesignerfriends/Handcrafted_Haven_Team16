@@ -164,7 +164,7 @@ export default function ProductForm({
           </p>
         </div>
 
-        <button type="submit" className={styles.submitBtn}>
+        <button type="submit" className={`${styles.submitBtn} button button--primary`}>
           {buttonText}
         </button>
       </form>

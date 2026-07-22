@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import { prisma } from "@/lib/prisma";
+import Link from "next/link";
+import Image from "next/image";
 
 // Explicit interfaces to satisfy strict TypeScript checks
 interface ProductImage {
@@ -22,12 +24,32 @@ interface Product {
   category?: ProductCategory | null;
 }
 
-export default async function ProductsPage() {
+interface ProductsPageProps {
+  searchParams: Promise<{
+    category?: string;
+  }>;
+}
+
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const params = await searchParams;
+  const activeCategory = params.category?.trim().toLowerCase();
+
   const products = await prisma.product.findMany({
+    where: activeCategory
+      ? {
+          category: {
+            name: {
+              equals: activeCategory,
+              mode: "insensitive",
+            },
+          },
+        }
+      : undefined,
     include: {
       images: true,
       category: true,
     },
+    orderBy: { createdAt: "desc" },
   });
 
   return (
@@ -35,47 +57,54 @@ export default async function ProductsPage() {
       <Navbar />
 
       <main className="products-page" style={{ padding: "2rem" }}>
-        <h1>Our Handcrafted Products</h1>
+        <h1 className="page-title">Our Handcrafted Products</h1>
+        <p className="section-subtitle">
+          {activeCategory
+            ? `Showing ${activeCategory} pieces from independent makers.`
+            : "Discover handmade pieces created by independent makers and small-batch artisans."}
+        </p>
 
-        <div
-          className="products-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-            gap: "1.5rem",
-            marginTop: "2rem",
-          }}
-        >
+        {activeCategory && (
+          <div style={{ marginTop: "0.75rem" }}>
+            <Link href="/products" className="button button--secondary" style={{ width: "auto" }}>
+              Clear filter
+            </Link>
+          </div>
+        )}
+
+        <div className="products-grid">
           {products.map((product: Product) => (
-            <a
+            <Link
               key={product.id}
               href={`/products/${product.id}`}
               className="product-card"
-              style={{
-                border: "1px solid #eee",
-                borderRadius: "8px",
-                padding: "1rem",
-                textDecoration: "none",
-                color: "inherit",
-              }}
             >
-              <img
-                src={product.images[0]?.url || "/placeholder.png"}
-                alt={product.name}
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  objectFit: "cover",
-                  borderRadius: "6px",
-                }}
-              />
-              <h2 style={{ fontSize: "1.2rem", marginTop: "0.5rem" }}>
-                {product.name}
-              </h2>
-              <p style={{ fontWeight: "bold" }}>${product.price.toString()}</p>
-            </a>
+              {product.images[0]?.url ? (
+                <div className="product-card__image-wrap">
+                  <Image
+                    src={product.images[0].url}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1120px) 50vw, 33vw"
+                    className="product-card__image"
+                  />
+                </div>
+              ) : (
+                <div className="product-card__placeholder" aria-hidden="true">
+                  No image yet
+                </div>
+              )}
+              <h2 className="product-card__title">{product.name}</h2>
+              <p className="product-card__price">${product.price.toString()}</p>
+            </Link>
           ))}
         </div>
+
+        {products.length === 0 && (
+          <p className="section-subtitle" style={{ marginTop: "1.5rem" }}>
+            No products found for this category yet.
+          </p>
+        )}
       </main>
 
       <Footer />

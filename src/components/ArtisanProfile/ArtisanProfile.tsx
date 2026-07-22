@@ -21,27 +21,21 @@ interface ArtisanProfileProps {
 export default function ArtisanProfile({ artisan }: ArtisanProfileProps) {
   return (
     <div className={styles.container}>
-      {/* Tarjeta de la historia del artesano */}
-      <section className={styles.card}>
-        <span className={styles.badge}>
-          Artisan Profile
-        </span>
-        
+      <section className={`${styles.card} surface-card`}>
+        <span className="section-label">Artisan Profile</span>
+
         <h1 className={styles.title}>
           {artisan.name || "Unnamed Artisan"}
         </h1>
 
         <div className={styles.storyHeader}>
-          <h2 className={styles.label}>
-            Our Story & Craft
-          </h2>
-          <p className={styles.subtitle} style={{ whiteSpace: "pre-line", marginBottom: 0 }}>
+          <h2 className={styles.label}>Our Story & Craft</h2>
+          <p className={`${styles.subtitle} text-muted`} style={{ whiteSpace: "pre-line", marginBottom: 0 }}>
             {artisan.bio || `Welcome to the craft space of ${artisan.name || "this artisan"}. Every piece in this collection is thoughtfully designed and handcrafted with quality, care, and attention to detail.`}
           </p>
         </div>
       </section>
 
-      {/* Sección de la Colección */}
       <section>
         <h2 className={styles.sectionTitle}>
           Handcrafted Collection ({artisan.products.length})
@@ -54,7 +48,7 @@ export default function ArtisanProfile({ artisan }: ArtisanProfileProps) {
         ) : (
           <div className={styles.grid}>
             {artisan.products.map((product) => (
-              <div key={product.id} className={styles.productCard}>
+              <div key={product.id} className={`${styles.productCard} surface-card`}>
                 <div>
                   <span className={styles.categoryTag}>
                     {product.category?.name || "Handcrafted"}
@@ -67,7 +61,7 @@ export default function ArtisanProfile({ artisan }: ArtisanProfileProps) {
                   </p>
                 </div>
 
-                <Link href={`/products/${product.id}`} className={styles.submitBtn}>
+                <Link href={`/products/${product.id}`} className="button button--primary" style={{ width: "100%" }}>
                   View Product
                 </Link>
               </div>
