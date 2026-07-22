@@ -24,7 +24,7 @@ export default function Values() {
         </h2>
         <ul className={styles.grid}>
           {values.map((v) => (
-            <li key={v.title} className={styles.item}>
+            <li key={v.title} className={`${styles.item} surface-card`}>
               <span className={styles.rule} aria-hidden="true" />
               <h3 className={styles.itemTitle}>{v.title}</h3>
               <p className={styles.itemText}>{v.text}</p>

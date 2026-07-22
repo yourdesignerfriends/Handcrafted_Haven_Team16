@@ -17,18 +17,18 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
 
   return (
     <div className={styles.container} style={{ maxWidth: "600px", margin: "4rem auto", padding: "2rem" }}>
-      <section className={styles.card}>
+      <section className={`${styles.card} surface-card`}>
         <span className={styles.badge}>Success</span>
         <h1 className={styles.title} style={{ fontSize: "2rem", marginBottom: "1rem" }}>
           {message}
         </h1>
-        <p className={styles.subtitle} style={{ marginBottom: "2rem" }}>
+        <p className={`${styles.subtitle} text-muted`} style={{ marginBottom: "2rem" }}>
           Everything is ready for the next step.
         </p>
 
         <Link
           href={redirectPath}
-          className={styles.submitBtn}
+          className={`${styles.submitBtn} button button--primary`}
           style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}
         >
           {buttonText}

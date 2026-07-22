@@ -25,8 +25,8 @@ export default async function CustomerProfilePage() {
       <Navbar />
 
       <main className="container" style={{ paddingBlock: "3rem" }}>
-        <h1 style={{ marginBottom: "1rem" }}>My Profile</h1>
-        <div style={{ border: "1px solid #e5e7eb", borderRadius: "12px", padding: "1rem" }}>
+        <h1 className="page-title">My Profile</h1>
+        <div className="surface-card" style={{ padding: "1rem" }}>
           <p><strong>Name:</strong> {user.name || "—"}</p>
           <p><strong>Email:</strong> {user.email}</p>
           <p><strong>Role:</strong> {user.role}</p>

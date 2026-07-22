@@ -36,7 +36,7 @@ export default async function EditProductPage({ params }: EditProductPageProps) 
       <Navbar />
 
       <main className="container" style={{ paddingBlock: "3rem" }}>
-        <h1 style={{ marginBottom: "1.5rem" }}>Edit Product</h1>
+        <h1 className="page-title">Edit Product</h1>
 
         <ProductForm
           initialData={product}

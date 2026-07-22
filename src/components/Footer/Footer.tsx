@@ -1,17 +1,32 @@
+import Link from "next/link";
 import styles from "./Footer.module.css";
 
 const columns = [
   {
     heading: "Shop",
-    links: ["Ceramics", "Textiles", "Jewelry", "Woodwork"],
+    links: [
+      { label: "Ceramics", href: "/products?category=ceramics" },
+      { label: "Textiles", href: "/products?category=textiles" },
+      { label: "Jewelry", href: "/products?category=jewelry" },
+      { label: "Woodwork", href: "/products?category=woodwork" },
+    ],
   },
   {
-    heading: "Company",
-    links: ["About", "How it works", "Artisans", "Contact"],
+    heading: "Explore",
+    links: [
+      { label: "Products", href: "/products" },
+      { label: "How it works", href: "/#how-it-works" },
+      { label: "Artisans", href: "/artisans" },
+      { label: "Become a seller", href: "/register/artisan" },
+    ],
   },
   {
     heading: "Account",
-    links: ["Sign in", "Register", "Seller dashboard"],
+    links: [
+      { label: "Sign in", href: "/login" },
+      { label: "Register as customer", href: "/register/customer" },
+      { label: "Register as artisan", href: "/register/artisan" },
+    ],
   },
 ];
 
@@ -20,9 +35,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.grid}`}>
         <div className={styles.brand}>
-          <a href="/" className={styles.logo}>
+          <Link href="/" className={styles.logo}>
             <span aria-hidden="true">✿</span> Handcrafted Haven
-          </a>
+          </Link>
           <p className={styles.tagline}>
             A marketplace for people who make things by hand.
           </p>
@@ -34,8 +49,8 @@ export default function Footer() {
               <h3 className={styles.colHeading}>{col.heading}</h3>
               <ul>
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <a href="#">{link}</a>
+                  <li key={link.label}>
+                    <Link href={link.href}>{link.label}</Link>
                   </li>
                 ))}
               </ul>

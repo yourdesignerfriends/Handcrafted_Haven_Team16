@@ -1,9 +1,5 @@
 import Navbar from "@/components/Navbar/Navbar";
 import Hero from "@/components/Hero/Hero";
-import Categories from "@/components/Categories/Categories";
-import HowItWorks from "@/components/HowItWorks/HowItWorks";
-import Values from "@/components/Values/Values";
-import CtaBanner from "@/components/CtaBanner/CtaBanner";
 import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
@@ -18,10 +14,6 @@ export default function Home() {
 
       <main id="main">
         <Hero />
-        <Categories />
-        <HowItWorks />
-        <Values />
-        <CtaBanner />
       </main>
 
       <Footer />
